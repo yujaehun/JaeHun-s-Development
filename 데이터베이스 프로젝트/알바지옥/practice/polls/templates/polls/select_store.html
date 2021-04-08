@@ -1,0 +1,59 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+<script src="{% static 'css/bootstrap.min.js'%}"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1 style="margin-right: 10px; font-size: 40px;">AlbaHell</h1>
+  	<div style="font-size: 15px;">
+  	<a style="margin-right: 10px;" href="/polls/{{user}}">Home</a>
+	<a style="margin-right: 10px;" href="/polls">Logout</a>
+	</div>
+
+  <div style="font-size: 15px;" class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/polls/{{user}}/{{store.id}}/resume">Submit Resume<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/polls/{{user}}/{{store.id}}/report">Report this store<span class="sr-only"></span></a>
+      </li>
+    </ul>
+  </div>
+ </nav>
+
+ <div style="font-size: 15px" class="card">
+  <div class="card-header">
+    <div style="margin-left: 15px;">
+    <table border="0" width="500" height = "200">
+	<tr>
+	    <th>Store Name</th>
+	    <td>{{store.store_name}}</td>
+	</tr>
+	<tr>
+	    <th>Pay</th>
+	    <td>{{store.pay}}</td>
+	</tr>
+	<tr>
+	    <th>Job Type</th>
+	    <td>{{store.job_type}}</td>
+	</tr>
+	<tr>
+	    <th>Phone Number</th>
+	    <td>{{store.phone_number}}</td>
+	</tr>
+	<tr>
+	    <th>Location</th>
+	    <td>{{store.location}}</td>
+	</tr>
+	<tr>
+	    <th>Content</th>
+    	<td>{{store.store_content}}</td>
+	</tr>
+    </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+<script src="{% static 'css/bootstrap.min.js'%}"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1 style="margin-right: 10px; font-size: 40px;">AlbaHell</h1>
+  	<div style="font-size: 15px;">
+  	<a style="margin-right: 10px;" href="/polls/{{user}}">Home</a>
+	<a style="margin-right: 10px;" href="/polls">Logout</a>
+	</div>
+
+  <div style="font-size: 15px;" class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    </ul>
+  </div>
+ </nav>
+ <div style="margin-left: 15px; font-size: 15px">
+	My Store
+	<br>
+	<form method="POST">
+	{% if store %}
+	{% csrf_token %}
+	<br>
+	Delete Store <input type="text" name="delete"><input type="submit" name="del" value="delete">
+	<br><br>
+	<div style="font-size: 15px; margin-right: 15px;" class="card">
+	{% for mystore in store %}
+  	<div class="card-header">
+    <div style="margin-left: 15px;">
+	<li><a href="/polls/{{user}}/mystore/{{mystore.id}}">{{mystore.store_name}}</a></li>
+  	</div>
+	</div>
+	{% endfor %}
+	</span>
+	{% else %}
+	<br><br>
+	You did not post your store
+	{% endif %}</div>
+</div>
+	
+{% endblock %}

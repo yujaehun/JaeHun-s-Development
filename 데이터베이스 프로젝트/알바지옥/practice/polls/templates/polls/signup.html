@@ -1,0 +1,48 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+<script src="{% static 'css/bootstrap.min.js'%}"></script>
+
+ <div style="font-size: 15px" class="card">
+  <div class="card-header">
+ 	<h1 style="font-size: 40px;">Sign Up</h1>
+ 	<br>
+ 	<br>
+    <div style="margin-left: 15px;">
+    <form method = "POST" action="">
+		{% csrf_token %}
+    <table border="0" width="500" height = "200">
+	<tr>
+	    <th>UserName</th>
+	    <td><input type="text" name="username"></td>
+	</tr>
+	<tr>
+	    <th>User ID</th>
+	    <td><input type="text" name="nickname"></td>
+	</tr>
+	<tr>
+	    <th>Password</th>
+	    <td><input type="password" name="password1"></td>
+	</tr>
+	<tr>
+	    <th>Confirm Password</th>
+	    <td><input type="password" name="password2"></td>
+	</tr>
+	<tr>
+	    <th>Birth</th>
+	    <td><input type="text" name="birth"></td>
+	</tr>
+	<tr>
+	    <th>Phone Number</th>
+    	<td><input type="tel" name="phonenumber"></td>
+	</tr>
+    </table>
+    <br>
+    <input type="submit" class="btn btn-primary" name="sign up" value="Sign Up">
+    </div>
+  </div>
+  </form>
+</div>
+{% endblock %}

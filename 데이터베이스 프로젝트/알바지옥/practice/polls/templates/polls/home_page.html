@@ -1,0 +1,44 @@
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css'%}">
+<script src="{% static 'css/bootstrap.min.js'%}"></script>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <h1 style="margin-right: 10px; font-size: 40px;" align="center">AlbaHell</h1>
+  	<div style="font-size: 15px;">
+  	Hello, 
+	{{user.name}}
+	<a style="margin-right: 10px;" href="/polls">Logout</a>
+	</div>
+
+  <div style="font-size: 15px;" class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/polls/{{user.id}}/store">Post My Store <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/polls/{{user.id}}/myresume">My Resume <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/polls/{{user.id}}/mystore">My Store <span class="sr-only"></span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% if store %}
+{% for show_store in store %}
+<div style="font-size: 15px" class="card">
+  <div class="card-header">
+    <a href="/polls/{{user.id}}/{{show_store.id}}">
+    <div style="margin-left: 15px;">
+    {{show_store.job_type}}</div>
+    <div style="margin-left: 15px;">
+    {{show_store.store_name}}</div>
+    <div style="margin-left: 15px;">
+    {{show_store.pay}}</div></a>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}
