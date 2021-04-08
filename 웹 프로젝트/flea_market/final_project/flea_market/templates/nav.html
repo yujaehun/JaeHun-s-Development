@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<script type="text/javascript">
+	function Checkbox(chk){
+		var obj = document.getElementsByName("price");
+		for(var i = 0; i < obj.length; i++){
+			if(obj[i] != chk){
+				obj[i].checked = false;
+			}
+		}
+	}
+	
+</script>
+
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a class="navbar-brand" href="/flea_market/"><img src="/static/homepage_images/logo.jpg" width="250" height="60" alt="Market Logo"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav mr-auto">
+        {% if name %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/flea_market/login" style="color: blue !important;">Logout <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Buying <i class="fas fa-shopping-cart"></i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdown09">
+          <a class="dropdown-item" href="/flea_market/wish_list">Wish list <i class="fas fa-heart"></i></a>
+            <a class="dropdown-item" href="/flea_market/shopping_list">Shopping list</a>
+            <a class="dropdown-item" href="/flea_market/purchase_list">Purchase list</a>
+            <a class="dropdown-item" href="/flea_market/auction">Auction</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Selling <i class="fas fa-money-bill-wave"></i></a>
+          <div class="dropdown-menu" aria-labelledby="dropdown09">
+            <a class="dropdown-item" href="/flea_market/my_item">My item</a>
+            <a class="dropdown-item" href="/flea_market/registration">Registration</a>
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item active">
+          <a class="nav-link" href="/flea_market/login">Login <span class="sr-only">(current)</span></a>
+        </li>
+        {% endif %}
+      </ul>
+      <form class="form-inline my-2 my-md-0" method="POST">
+      {% csrf_token %}
+      <div class="input-group">
+        <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search" style="width: 200px !important;">
+        <button type="submit" class="btn btn-sm btn-primary" name="search_btn" id="search_btn"><i class="fas fa-search"></i></button>
+      </div>
+      <div class="nav-item dropleft" style="margin: 10px;">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-left: 0px !important;">Detail</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown09">
+          	<div style="margin: 10px;">
+          	<p>Product Name</p>
+            	<input name="search_product" class="form-control" type="text" placeholder="Search" aria-label="Search" style="width: 250px !important;">
+            	<br><br>
+            <p>Seller Name</p>
+            	<input name="search_seller" class="form-control" type="text" placeholder="Search" aria-label="Search" style="width: 250px !important;">
+            	<br><br>
+            <p>Price</p>
+            	<input type="checkbox" name="price" onclick="Checkbox(this)" value="10"> ~ 10$
+            	<input type="checkbox" name="price" onclick="Checkbox(this)" value="30"> ~ 30$
+            	<input type="checkbox" name="price" onclick="Checkbox(this)" value="50"> ~ 50$
+            	<br>
+            	<input type="checkbox" name="price" onclick="Checkbox(this)" value="70"> ~ 70$
+            	<input type="checkbox" name="price" onclick="Checkbox(this)" value="90"> ~ 90$
+            	<input type="checkbox" name="price" onclick="Checkbox(this)" value="91"> 90$ ~
+            	<br>
+            	<input type="checkbox" name="auction" value="1"> Auction
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </nav>
+</header>
+{% block nav %}
+{% endblock %}
+{% endblock %}

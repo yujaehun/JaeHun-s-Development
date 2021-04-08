@@ -1,0 +1,16 @@
+{% extends 'admin_nav.html' %}
+{% block admin_nav %}
+
+<main role="main" class="container">
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Recent report</h6>
+    {% for report in reports %}
+    <div class="media text-muted pt-3">
+      <a href="/flea_market/admin/{{report.id}}" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <h6 class="d-block text-gray-dark">@ {{report.title}}</h4>
+      </a>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}

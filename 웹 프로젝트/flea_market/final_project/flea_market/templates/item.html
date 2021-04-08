@@ -1,0 +1,250 @@
+{% extends 'nav.html' %}
+{% block nav %}
+
+<style type="text/css">
+  input [type="submit"]{
+     font-family: FontAwesome;
+  }
+</style>
+
+
+
+
+ {% if msg %}
+    <script type="text/javascript">
+      alert("{{msg}}")
+      window.history.back();
+    </script>
+{% endif %}
+
+<main role="main">
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+        <h4 style="text-align: center !important;">{{item.item_name}}</h4>
+        {% if item.auction == 1 %}
+        {% if item.sold_out == 0 %}
+        <div id="t"></div>
+        {% endif %}
+        {% endif %}
+        {% if name %}
+        <div style="text-align: right;">
+          <h4><a href="/flea_market/{{item.id}}/report">Report</a></h4>
+        </div>
+        {% endif %}
+        <br>
+          {% if item.picture != "False" %}
+          <center><img src="{{item.picture.url}}" style="width: 500px; height: auto;"></center>
+          {% endif %}
+      <br>
+      <h2 style="text-align: center;">
+      {% if item.sold_out == 0 %}
+      {{item.price}} $
+      {% if bidder %}
+      <h4 style="text-align: center; color: #5882FA;">suggested by {{bidder}}</h4>
+      {% endif %}
+      {% else %}
+      Sold out
+      {% endif %}
+      </h2>
+      <br>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <h4 style="text-align: left">About</h4>
+          <p style="text-align: left">Seller: {{item.seller_name}} </p>
+          {% if item.explain %}
+          <p style="text-align: left">{{item.explain}}</p>
+          {% endif %}
+        </div>
+        <div class="col-md-6 mb-3">
+          <h4 style="text-align: left">Trading Place</h4>
+          <p style="text-align: left">{{item.trading_place}}</p>
+          <h4 style="text-align: left">Phone Number</h4>
+          <p style="text-align: left">{{seller.phone_number}}</p>
+        </div>
+      </div>
+      <form method="POST">
+        {% csrf_token %}
+      <div class="row">
+        {% if item.sold_out != 1 %}
+        {% if item.auction == 1 %}
+        <div class="col-md-4 mb-3">
+        <button class="btn btn-lg btn-primary btn-block" name="wish_btn" type="submit" style="margin-bottom: 20px !important;" value="1" onclick="{return confirm('Would you like to put this item in your wish list?')}">Likes {{item.likes}}</button>
+        </div>
+        <div class="col-md-4" style="width: 300px !important;">
+          <button type="button" class="btn btn-lg btn-primary btn-block" data-toggle="modal" data-target="#auctionModal" >BIDDING</button>
+        </div>
+        {% if item.immediate != 0 %}
+        <div class="col-md-4 mb-3">
+          <button class="btn btn-lg btn-primary btn-block" name="buy_btn" type="submit" style="margin-bottom: 20px !important;" value="1" onclick="{return confirm('Would you like to buy this item?')}">BUY {{item.immediate}} $</button>
+        </div>
+        {% endif %}
+    <div class="modal fade" id="auctionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Bidding</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+          <div class="modal-body">
+            Price is must higher than below price.<br>
+            {% if item.immediate != 0 %}
+            If you enter higher price than {{item.immediate}},<br>
+            you will buy immediately at {{item.immediate}} $
+            {% endif %}
+            <br><br><br>
+            <input type="number" class="form-control" id="bidding" placeholder="" name="bidding" value="{{item.price}}" required>
+            <div class="invalid-feedback">
+              Price is required.
+            </div>
+          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" name="bidding_btn" value="1">Bidding</button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+      </div>
+        {% else %}
+        <div class="col-md-4 mb-3">
+        <button class="btn btn-lg btn-primary btn-block" name="wish_btn" type="submit" style="margin-bottom: 20px !important;" value="1" onclick="{return confirm('Would you like to put this item in your wish list?')}">Likes {{item.likes}}</button>
+        </div>
+        <div class="col-md-4 mb-3">
+        <button class="btn btn-lg btn-primary btn-block" name="sl_btn" type="submit" style="margin-bottom: 20px !important;" value="1" onclick="{return confirm('Would you like to put this item in your basket?')}">ADD TO CART</button>
+        </div>
+        <div class="col-md-4 mb-3">
+          <button class="btn btn-lg btn-primary btn-block" name="buy_btn" type="submit" style="margin-bottom: 20px !important;" value="1" onclick="{return confirm('Would you like to buy this item?')}">BUY</button>
+        </div>
+        {% endif %}
+        {% endif %}
+       </div>
+        </form>
+      </div>
+    </div>
+  <div class="album py-5 bg-light">
+    <div class="container" style="">
+    <div style="border-bottom: 1px solid gray; padding-bottom: 10px;">
+      <h4 style="text-align: center !important;">Review</h4>
+      <div style="text-align: right;">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">WRITE A REVIEW
+      </button>
+      <br>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">REVIEW</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+          <div class="modal-body">
+            <textarea type="text" class="form-control" id="content" placeholder="" name="content" style="height: 200px;" required></textarea>
+            <div class="invalid-feedback">
+              Content is required.
+            </div>
+          </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" name="rev_btn" value="1">Save Review</button>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+      </div>
+      {% for review in reviews %}
+      <div style="border-bottom: 1px solid black;">
+      <br>
+      <h4 style="text-align: center;">{{review.user_id}}</h4>
+      <br>
+      <p style="text-align: center;">{{review.review}}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+    <div class="album py-5 bg-light">
+    <div class="container">
+      <h4 style="text-align: center !important;">Other Item Of {{item.seller_name}}</h4>
+      <br>
+      <div class="row">
+      {% for other in other_item %}
+        {% if item != other %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            {% if other.picture != "False"%}
+            <img src="{{other.picture.url}}" style="object-fit: contain; width: auto; height: 225px !important" x="50%" y="50%" >
+            {% else %}
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
+            <text x="50%" y="50%" fill="#eceeef" dy=".3em">No Picture</text>
+            </svg>
+            {% endif %}
+            <div class="card-body">
+              <a href="/flea_market/{{other.id}}"><h6>{{other.item_name}}</h6>
+              {% if other.auction ==  1%}
+              <i class="fas fa-gavel"></i>
+              {% endif %}
+              <h8>
+              {% if other.sold_out == 0 %}
+              {{other.price}} $
+              <div style="float: right">
+              Likes: {{other.likes}}
+              </div>
+              {% else %}
+              Sold out
+              {% endif %}
+              </h8>
+              </a>         
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      {% endfor %}
+      </div>      
+      </div>
+    </div>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    tid=setInterval('msg_time()',1000);
+  });
+  var stDate = new Date().getTime();
+  
+  var edDate = '{{end_time}}';
+  
+  var edDate = new Date(edDate).getTime();
+  
+  var RemainDate = edDate - stDate;
+  
+  function msg_time() {
+    var days = Math.floor(RemainDate / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((RemainDate % (1000 * 60 * 60 * 24)) / (1000*60*60));
+    var miniutes = Math.floor((RemainDate % (1000 * 60 * 60)) / (1000*60));
+    var seconds = Math.floor((RemainDate % (1000 * 60)) / 1000);
+    
+    m = "Remaining auction time: "+"<p style = 'color: red;'>"+hours + "h " +  miniutes + "m " + seconds +"s"+"</p>";
+    
+    
+    if (RemainDate < 0) {      
+      document.getElementById('t').innerHTML = "Finish Bidding";
+      clearInterval(tid);
+    }else{
+      document.getElementById('t').innerHTML = m;
+      RemainDate = RemainDate - 1000;
+    }
+  }
+  </script>
+{% endblock %}

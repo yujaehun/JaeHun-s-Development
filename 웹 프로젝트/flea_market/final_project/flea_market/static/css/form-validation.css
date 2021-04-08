@@ -1,0 +1,11 @@
+body {
+	padding: 30px;
+
+}
+
+.container {
+  max-width: 960px;
+  align-items: center;
+}
+
+.lh-condensed { line-height: 1.25; }

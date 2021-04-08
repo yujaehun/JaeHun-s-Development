@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flea Market</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/navbars/">
+
+    <!-- Bootstrap core CSS -->
+<link href="/static/css/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="/static/css/signin.css" rel="stylesheet">
+</head>
+
+{% if msg %}
+    <script type="text/javascript">
+      alert("{{msg}}")
+      window.history.back();
+    </script>
+  {% endif %}
+<body class="text-center" style="background-color: #FAFAFA">
+    <form method="POST" class="form-signin" action="{% url 'flea_market:login' %}">
+    {% csrf_token %}
+  <a href="/flea_market"><img class="mb-4" src="/static/homepage_images/logo.jpg" alt="" width="250" height="72"></a>
+  <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+  <label for="inputID" class="sr-only">ID</label>
+  <input type="text" id="inputID" name = inputID class="form-control" placeholder="ID" required autofocus>
+  <label for="inputPassword" class="sr-only">Password</label>
+  <input type="password" id="inputPassword" name = inputPassword class="form-control" placeholder="Password" required>
+  
+  <button class="btn btn-lg btn-primary btn-block" type="submit"> Login</button>
+  <p>Don't you have an account?<a href="/flea_market/signup"> SIGN UP</a></p>
+</form>
+</body>
+</html>

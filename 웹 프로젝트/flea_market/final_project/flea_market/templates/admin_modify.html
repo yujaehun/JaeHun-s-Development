@@ -1,0 +1,91 @@
+{% extends 'admin.html' %}
+{% block admin_nav %}
+
+<main role="main" class="container">
+<center>
+  <div class="my-2 p-2 bg-white rounded shadow-sm">
+  <form method="POST">
+  {% csrf_token %}
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>User ID</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="text" name="user_id" value="{{user.user_id}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>Password</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="text" name="password" value="{{user.password}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>First Name</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="text" name="first_name" value="{{user.first_name}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>Last Name</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="text" name="last_name" value="{{user.last_name}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>Email</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="text" name="email" value="{{user.email}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>Phone Number</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="text" name="phone_number" value="{{user.phone_number}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>Address</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="text" name="address" value="{{user.address}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <center><h6>Ban counter</h6></center>
+      </div>
+      <div class="col-4">
+      <input type="number" name="ban_counter" value="{{user.ban_counter}}">
+      </div>
+    </div>
+    <div class="row mb-3">
+      
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        
+      </div>
+      <div class="col-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit" name="mod_btn" value="1">Modify</button>
+      </div>
+      <div class="col-4">
+      <button class="btn btn-primary btn-lg btn-block" type="submit" name="del_btn" value="1">Delete</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</center>
+</main>
+{% endblock %}

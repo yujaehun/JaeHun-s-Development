@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<script type="text/javascript">
+  function Checkbox(chk){
+    var obj = document.getElementById('immediate');
+    if (obj.readOnly) {
+      obj.readOnly = false;
+      document.getElementById('immediate').value = 0;
+    }
+    else{
+      obj.readOnly = true;
+    }
+  }
+  
+</script>
+
+  <body class="bg-light">
+
+
+    <div class="container" style="">
+  <div class="py-5">
+    <a href="/flea_market"><img class="d-block mx-auto mb-4" src="/static/homepage_images/logo.jpg" alt="" width="250" height="72"></a>
+  </div>
+      <h4 class="mb-3">Modify Item</h4>
+      <form method="POST" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="ItemName">Item name</label>
+            <input type="text" class="form-control" id="itemname" name="itemname" placeholder="" value="{{item.item_name}}" required>
+            <div class="invalid-feedback">
+              Item name is required.
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="Price">Price ($)</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="" value="{{item.price}}">
+            
+            <div class="invalid-feedback">
+              Price is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="Price">Immediate Purchase ($)</label>
+            
+            <input type="number" class="form-control" id="immediate" name="immediate" placeholder="" value="{{item.immediate}}" readonly>
+            <p><input type="checkbox" name="auction" value="1" onclick="Checkbox(this)"> Auction</p>
+            <div class="invalid-feedback">
+              Price is required.
+            </div>
+          </div>
+             
+        </div>
+        <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="Explain">Trading Place</label>
+          <textarea type="text" class="form-control" id="place" placeholder="" name="place" style="height: 200px;" required>{{item.trading_place}}</textarea>
+            <div class="invalid-feedback">
+              Trading place is required.
+            </div>
+        </div>
+          <div class="col-md-6 mb-3">
+            <label for="Explain">Explain your item<span class="text-muted">(Optional)</span></label>
+            <textarea type="text" class="form-control" id="confirm" placeholder="" name="explain" style="height: 200px;">{{item.explain}}</textarea>
+            
+          </div> 
+
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="picture">Picture<span class="text-muted">(Optional)</span></label>
+          <div class="card mb-4 shadow-sm">
+                   
+            <input type="file" class="form-control" id="picture" placeholder="" name = "picture">
+          </div>
+        </div> 
+        
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Modify</button>
+      </form>
+  </div>
+<br><br><br>
+</body>
+{% endblock %}

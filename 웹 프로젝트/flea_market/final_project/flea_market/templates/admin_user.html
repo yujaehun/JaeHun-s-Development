@@ -1,0 +1,47 @@
+{% extends 'admin.html' %}
+{% block admin_nav %}
+
+<main role="main" class="container">
+
+  <div class="my-3 p-3 bg-white rounded shadow-sm">
+    <div class="row mb-3">
+      <div class="col-4">
+        <h6 class="border-bottom border-gray pb-2 mb-0">User</h6>
+      </div>
+      <div class="col-4">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Type</h6>
+      </div>
+      <div class="col-4">
+      <h6 class="border-bottom border-gray pb-2 mb-0">Ban counter</h6>
+      </div>
+    </div>
+    {% for user in users %}
+    <div class="row mb-3">
+      <div class="col-4">
+        {% if user.user_id == "admin" %}
+          admin
+        {% else %}
+        <a href="/flea_market/admin/user/{{user.user_id}}" class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <h6>@ {{user.user_id}}</h6>
+        {% endif %}
+        </a>
+      </div>
+      <div class="col-4">
+        {% if user.user_id == "admin" %}
+        admin
+        {% else %}
+        User
+        {% endif %}
+      </div>
+      <div class="col-4">
+        {% if user.user_id == "admin" %}
+        admin
+        {% else %}
+        {{user.ban_counter}}
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
+    <a class="navbar-brand" href="/flea_market/admin/"><img src="/static/homepage_images/logo.jpg" width="250" height="60" alt="Market Logo"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/flea_market/login" style="color: blue !important;">Logout <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/flea_market/admin/user"!important;">User <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+</header>
+{% block admin_nav %}
+{% endblock %}
+{% endblock %}

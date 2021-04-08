@@ -1,0 +1,52 @@
+{% extends 'admin.html' %}
+{% block admin_nav %}
+
+<main role="main" class="container">
+
+  <div class="my-2 p-2 bg-white rounded shadow-sm">
+  <form method="POST">
+  {% csrf_token %}
+    <div class="row mb-3">
+      <div class="col-4">
+      </div>
+      <div class="col-4">
+      <p style="text-align: center;">{{report.title}}</p>
+      </div>
+      
+    </div>
+    <div class="row mb-3">
+      <div class="col-6">
+      <h6 style="text-align: center;">Report User ID: {{report_user.user_id}}<a href="/flea_market/admin/user/{{report_user.user_id}}"> modify</a></h6>
+      </div>
+      <div class="col-6">
+        <h6 style="text-align: center;">Reported User ID: {{reported_user.user_id}}<a href="/flea_market/admin/user/{{reported_user.user_id}}"> modify</a></h6>
+      </h6>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        <h6 style="">content</h6>
+      </div>
+    </div>      
+        <p>{{report.report_content}}</p>
+    </div>
+    <div class="row mb-3">
+      <div class="col-4">
+        
+      </div>
+      <div class="col-4">
+        
+      </div>
+      <div class="col-4">
+      <button class="btn btn-primary btn-lg btn-block" type="submit" name="del_btn" value="1">Delete</button>
+      </div>
+    </div>
+  </form>
+  </div>
+</main>
+{% endblock %}
