@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    tools:context=".Resume">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/resumeTitle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Resume"
+            android:textColor="#FFF"
+            android:textSize="40dp"
+            android:fontFamily="@font/gillsansb"
+            android:layout_marginTop="50dp"/>
+
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:textSize="15dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:text="Photo"
+            android:fontFamily="@font/gillsans"
+            />
+
+        <ImageView
+            android:layout_marginStart="-100dp"
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_person_black_24dp"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="15dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:text="Name"
+            android:fontFamily="@font/gillsans"
+            />
+
+        <TextView
+            android:id="@+id/resumename"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:backgroundTint="#FFF"
+            />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:text="Birthday"
+            android:fontFamily="@font/gillsans"
+            />
+
+        <TextView
+            android:id="@+id/resumebirth"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:backgroundTint="#FFF"
+            />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:text="Phone Number"
+            android:fontFamily="@font/gillsans"
+            />
+
+        <TextView
+            android:id="@+id/resumephone_number"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:backgroundTint="#FFF" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="15dp"
+            android:textColor="#FFF"
+            android:textStyle="bold"
+            android:text="Content"
+            android:fontFamily="@font/gillsans"
+            />
+
+        <TextView
+            android:id="@+id/resumecontent"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:backgroundTint="#FFF" />
+
+
+    </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

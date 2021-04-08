@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    tools:context=".Submitted_Resume">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal"
+                android:id="@+id/SubmitresumeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:textSize="40dp"
+                android:fontFamily="@font/gillsansb"
+                android:layout_marginTop="50dp"/>
+
+
+            <ListView
+                android:id="@+id/sb_resumelistView"
+                android:layout_width="match_parent"
+                android:layout_height="629dp"
+                android:layout_marginTop="30dp"
+                android:clickable="true"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</LinearLayout>

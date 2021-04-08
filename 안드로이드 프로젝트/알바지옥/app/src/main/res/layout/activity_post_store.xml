@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/login_background"
+    tools:context=".Post_Store">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/PostStoreTitle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/gillsansb"
+            android:text="Post Store"
+            android:textColor="#FFF"
+            android:textSize="40dp" />
+
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:fontFamily="@font/gillsans"
+            android:text="Store name"
+            android:textColor="#FFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/postStorename"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/colorAccent_main"
+            android:ems="10"
+            android:hint=""
+
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/gillsans"
+            android:text="Pay"
+            android:textColor="#FFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/postPay"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/colorAccent_main"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/gillsans"
+            android:text="Job type"
+            android:textColor="#FFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/postJobtype"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/colorAccent_main"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/gillsans"
+            android:text="Phone Number"
+            android:textColor="#FFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/postPhone_number"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/colorAccent_main"
+            android:ems="10"
+            android:inputType="textPhonetic" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/gillsans"
+            android:text="Location"
+            android:textColor="#FFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/postLocation"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/colorAccent_main"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/gillsans"
+            android:text="Content"
+            android:textColor="#FFF"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/postContent"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/colorAccent_main"
+            android:ems="10"
+            android:inputType="textPhonetic" />
+
+
+        <Button
+            android:id="@+id/postButton"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/gillsansb"
+            android:text="POST"
+            android:textColor="#D72758"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
+
+    </ScrollView>
+
+</LinearLayout>
